@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import './App.css';
 import { Description } from './components/Description/Description';
@@ -7,7 +7,12 @@ import { Feedback } from './components/Feedback/Feedback';
 import { Notification } from './components/Notification/Notification';
 
 function App() {
-  const [values, setValues] = useState({ good: 0, neutral: 0, bad: 0 });
+  const [values, setValues] = useState(() => {
+    const savedValues = window.localStorage.getItem('saved-values');
+    return savedValues
+      ? JSON.parse(savedValues)
+      : { good: 0, neutral: 0, bad: 0 };
+  });
   const { good, neutral, bad } = values;
 
   const options = Object.keys(values);
@@ -30,6 +35,10 @@ function App() {
   const reset = () => {
     setValues({ good: 0, neutral: 0, bad: 0 });
   };
+
+  useEffect(() => {
+    window.localStorage.setItem('saved-values', JSON.stringify(values));
+  }, [values]);
 
   return (
     <>
