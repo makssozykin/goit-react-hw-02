@@ -42,7 +42,11 @@ function App() {
 
   return (
     <>
-      <Description />
+      <Description
+        title="Sip Happens Café"
+        text="Please leave your feedback about our service by selecting one of the
+        options below."
+      />
       <Options
         options={options}
         updateFeedback={updateFeedback}
