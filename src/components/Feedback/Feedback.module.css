@@ -1,0 +1,17 @@
+.feedback-cont {
+  padding: 10px 0 10px 50px;
+}
+
+.feedback-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  gap: 10px;
+  list-style: none;
+}
+
+.feedback-list li {
+  font-size: 20px;
+  font-weight: 500;
+}
